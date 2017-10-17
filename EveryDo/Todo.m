@@ -2,7 +2,7 @@
 
 @implementation Todo
 
-- (instancetype)initWithTitle: (NSString *)title andDescription: (NSString *) description andPriority: (int) priority
+- (instancetype)initWithTitle: (NSString *)title andDescription: (NSString *) description andPriority: (NSString *) priority
 {
     self = [super init];
     if (self) {
