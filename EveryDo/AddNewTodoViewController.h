@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface AddNewTodoViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UITextField *titleTextField;
+@property (nonatomic, weak) IBOutlet UITextField *descriptionTextField;
+@property (nonatomic, weak) IBOutlet UIPickerView *priorityPicker;
+
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *SaveButton;
 
 @end

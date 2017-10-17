@@ -86,10 +86,26 @@
             </objects>
             <point key="canvasLocation" x="1453.5999999999999" y="-630.13493253373315"/>
         </scene>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="cAG-uK-UsB">
+            <objects>
+                <navigationController id="KkP-e6-bdO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ilL-nc-lhI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4d1-dI-B3d" kind="relationship" relationship="rootViewController" id="gWh-kK-aUp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CBH-zN-ZpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="52"/>
+        </scene>
+        <!--Add New Todo View Controller-->
         <scene sceneID="DgX-iE-8L7">
             <objects>
-                <viewController id="4d1-dI-B3d" sceneMemberID="viewController">
+                <viewController id="4d1-dI-B3d" customClass="AddNewTodoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mDu-nE-tAr"/>
                         <viewControllerLayoutGuide type="bottom" id="aos-lM-e9q"/>
@@ -143,10 +159,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="89f-9I-Ska"/>
+                    <connections>
+                        <outlet property="SaveButton" destination="4Rw-dS-XF5" id="sXR-9h-QEx"/>
+                        <outlet property="cancelButton" destination="6R1-1s-FAA" id="1Yj-lG-8wn"/>
+                        <outlet property="descriptionTextField" destination="wsd-wZ-UDB" id="ohk-ZT-xlv"/>
+                        <outlet property="priorityPicker" destination="Wqn-Ko-QTK" id="w5b-iH-Dlo"/>
+                        <outlet property="titleTextField" destination="XYL-CJ-VbA" id="b8e-It-hdr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPM-KL-wvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="81.409295352323838"/>
+            <point key="canvasLocation" x="1380" y="52"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -220,7 +243,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DrM-Er-6BB">
                             <connections>
                                 <action selector="insertNewObject:" destination="7bK-jq-Zjz" id="NQ1-bF-4QQ"/>
-                                <segue destination="4d1-dI-B3d" kind="show" id="E9B-qd-feq"/>
+                                <segue destination="KkP-e6-bdO" kind="presentation" id="WCK-Bi-j6e"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
