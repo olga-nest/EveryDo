@@ -8,6 +8,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "CustomTableViewCell.h"
 
 
 @interface MasterViewController ()
@@ -34,10 +35,10 @@
 }
 
 -(void)createTodos {
-    Todo *todo1 = [[Todo alloc]initWithTitle:@"Buy cat food" andDescription:@"Four bags" andPriority:1];
-    Todo *todo2 = [[Todo alloc]initWithTitle:@"Buy dog food" andDescription:@"Five bags" andPriority:1];
-    Todo *todo3 = [[Todo alloc]initWithTitle:@"Buy bird food" andDescription:@"Four bags" andPriority:1];
-    Todo *todo4 = [[Todo alloc]initWithTitle:@"Buy rat food" andDescription:@"Four bags" andPriority:1];
+    Todo *todo1 = [[Todo alloc]initWithTitle:@"Buy cat food" andDescription:@"Four bags" andPriority:@"1"];
+    Todo *todo2 = [[Todo alloc]initWithTitle:@"Buy dog food" andDescription:@"Five bags" andPriority:@"1"];
+    Todo *todo3 = [[Todo alloc]initWithTitle:@"Buy bird food" andDescription:@"Four bags" andPriority:@"2"];
+    Todo *todo4 = [[Todo alloc]initWithTitle:@"Buy rat food" andDescription:@"Four bags" andPriority:@"2"];
     self.allTodos = [NSMutableArray arrayWithObjects:todo1, todo2, todo3, todo4, nil];
 }
 
@@ -76,13 +77,14 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
+- (CustomTableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     Todo *todo = self.allTodos[indexPath.row];
-    cell.textLabel.text = todo.title;
-    cell.detailTextLabel.text = todo.todoDescription;
+    cell.cellTitle.text = todo.title;
+    cell.cellSubtitle.text = todo.todoDescription;
+    cell.cellPriority.text = todo.priorityNumber;
     return cell;
 }
 
