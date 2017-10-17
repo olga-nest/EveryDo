@@ -80,8 +80,9 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *todo = self.allTodos[indexPath.row];
-    cell.textLabel.text = [todo description];
+    Todo *todo = self.allTodos[indexPath.row];
+    cell.textLabel.text = todo.title;
+    cell.detailTextLabel.text = todo.todoDescription;
     return cell;
 }
 
