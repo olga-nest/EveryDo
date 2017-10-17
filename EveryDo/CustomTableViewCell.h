@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomTableViewCell : UITableViewCell 
+@interface CustomTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *cellTitle;
+@property (weak, nonatomic) IBOutlet UILabel *cellSubtitle;
+@property (weak, nonatomic) IBOutlet UILabel *cellPriority;
+
+
 
 @end
