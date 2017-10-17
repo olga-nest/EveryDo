@@ -26,8 +26,10 @@
 
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//    self.navigationItem.rightBarButtonItem = addButton;
+    
+    
 }
 
 
@@ -35,19 +37,20 @@
 }
 
 -(void)createTodos {
-    Todo *todo1 = [[Todo alloc]initWithTitle:@"Buy cat food" andDescription:@"Four bags" andPriority:@"1"];
-    Todo *todo2 = [[Todo alloc]initWithTitle:@"Buy dog food" andDescription:@"Five bags" andPriority:@"1"];
-    Todo *todo3 = [[Todo alloc]initWithTitle:@"This is a long long long long long title" andDescription:@"Four bags" andPriority:@"2"];
-    Todo *todo4 = [[Todo alloc]initWithTitle:@"Buy rat food" andDescription:@"This is a long long long long long long long long long description" andPriority:@"2"];
+    Todo *todo1 = [[Todo alloc]initWithTitle:@"Buy cat food" andDescription:@"Four bags" andPriority:@"High"];
+    Todo *todo2 = [[Todo alloc]initWithTitle:@"Buy dog food" andDescription:@"Five bags" andPriority:@"High"];
+    Todo *todo3 = [[Todo alloc]initWithTitle:@"This is a long long long long long title" andDescription:@"Four bags" andPriority:@"Low"];
+    Todo *todo4 = [[Todo alloc]initWithTitle:@"Buy rat food" andDescription:@"This is a long long long long long long long long long description. Realy long long long long long long long long long long long long long long long long long long long long long long long long long long long description" andPriority:@"Low"];
     self.allTodos = [NSMutableArray arrayWithObjects:todo1, todo2, todo3, todo4, nil];
 }
 
 
-- (void)insertNewObject:(id)sender {
+- (IBAction)insertNewObject:(id)sender {
     if (!self.allTodos) {
         self.allTodos = [[NSMutableArray alloc] init];
     }
-//    [self.allTodos insertObject:[Todo *] atIndex:0];
+    Todo *todo = [Todo new];
+    [self.allTodos insertObject:todo atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -105,7 +108,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70.0;
+    return 80.0;
 }
 
 
