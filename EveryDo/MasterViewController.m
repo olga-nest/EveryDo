@@ -37,8 +37,8 @@
 -(void)createTodos {
     Todo *todo1 = [[Todo alloc]initWithTitle:@"Buy cat food" andDescription:@"Four bags" andPriority:@"1"];
     Todo *todo2 = [[Todo alloc]initWithTitle:@"Buy dog food" andDescription:@"Five bags" andPriority:@"1"];
-    Todo *todo3 = [[Todo alloc]initWithTitle:@"Buy bird food" andDescription:@"Four bags" andPriority:@"2"];
-    Todo *todo4 = [[Todo alloc]initWithTitle:@"Buy rat food" andDescription:@"Four bags" andPriority:@"2"];
+    Todo *todo3 = [[Todo alloc]initWithTitle:@"This is a long long long long long title" andDescription:@"Four bags" andPriority:@"2"];
+    Todo *todo4 = [[Todo alloc]initWithTitle:@"Buy rat food" andDescription:@"This is a long long long long long long long long long description" andPriority:@"2"];
     self.allTodos = [NSMutableArray arrayWithObjects:todo1, todo2, todo3, todo4, nil];
 }
 
@@ -103,6 +103,11 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70.0;
+}
+
 
 
 @end
