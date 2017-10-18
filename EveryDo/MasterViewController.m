@@ -15,6 +15,8 @@
 
 @property NSMutableArray *allTodos;
 
+
+
 @end
 
 @implementation MasterViewController
@@ -126,26 +128,47 @@
 
     NSIndexPath *indexPathSwipe = [self.tableView indexPathForRowAtPoint:location];
 
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPathSwipe];
+    CustomTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPathSwipe];
 
     Todo *toDo = [self.allTodos objectAtIndex:indexPathSwipe.row];
 
     if (toDo.isCompleted == NO) {
+        
         NSLog(@"Setting isCompleted to YES");
         toDo.isCompleted = YES;
         NSLog(@"Setting accessory checkmark");
+        NSString *toDoTitle = cell.cellTitle.text;
+        NSLog(@"Using cell title %@", toDoTitle);
+        NSDictionary *attribute = @{NSStrikethroughStyleAttributeName : [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+        NSAttributedString *toDoAtrributedTitle = [[NSAttributedString alloc]initWithString:toDoTitle attributes:attribute];
+        cell.cellTitle.attributedText = toDoAtrributedTitle;
+
+        
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    } if (toDo.isCompleted == YES) {
-//        toDo.isCompleted = NO;
-//        NSLog(@"Removing accessory checkmark");
-//        cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                toDo.isCompleted = NO;
+                NSLog(@"Removing accessory checkmark");
+                cell.accessoryType = UITableViewCellAccessoryNone;
     }
-
-
-
-
-
 }
+
+//CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//
+//Todo *todo = self.allTodos[indexPath.row];
+//
+//if (todo.isCompleted == NO) {
+//    cell.cellTitle.text = todo.title;
+//    cell.cellSubtitle.text = todo.todoDescription;
+//    cell.cellPriority.text = todo.priorityNumber;
+//    return cell;
+//} else if (todo.isCompleted == YES) {
+//    NSString *toDoTitle = cell.cellTitle.text;
+//    NSDictionary *attribute = @{NSStrikethroughStyleAttributeName : [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+//    NSAttributedString *toDoAtrributedTitle = [[NSAttributedString alloc]initWithString:toDoTitle attributes:attribute];
+//    cell.cellTitle.attributedText = toDoAtrributedTitle;
+//    return cell;
+
+
 
 
 @end
