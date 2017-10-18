@@ -15,8 +15,6 @@
 
 @property NSMutableArray *allTodos;
 
-
-
 @end
 
 @implementation MasterViewController
@@ -143,32 +141,13 @@
         NSAttributedString *toDoAtrributedTitle = [[NSAttributedString alloc]initWithString:toDoTitle attributes:attribute];
         cell.cellTitle.attributedText = toDoAtrributedTitle;
 
-        
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+       
             } else {
                 toDo.isCompleted = NO;
                 NSLog(@"Removing accessory checkmark");
                 cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
-
-//CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-//
-//Todo *todo = self.allTodos[indexPath.row];
-//
-//if (todo.isCompleted == NO) {
-//    cell.cellTitle.text = todo.title;
-//    cell.cellSubtitle.text = todo.todoDescription;
-//    cell.cellPriority.text = todo.priorityNumber;
-//    return cell;
-//} else if (todo.isCompleted == YES) {
-//    NSString *toDoTitle = cell.cellTitle.text;
-//    NSDictionary *attribute = @{NSStrikethroughStyleAttributeName : [NSNumber numberWithInt:NSUnderlineStyleSingle]};
-//    NSAttributedString *toDoAtrributedTitle = [[NSAttributedString alloc]initWithString:toDoTitle attributes:attribute];
-//    cell.cellTitle.attributedText = toDoAtrributedTitle;
-//    return cell;
-
-
-
 
 @end
