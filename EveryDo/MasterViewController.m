@@ -25,12 +25,16 @@
     self.tableView.dataSource = self;
     [self createTodos];
 
-    self.navigationItem.leftBarButtonItem = self.editButtonItem; 
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(toDoCompleted:)];
+ //   swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableView addGestureRecognizer:swipeRecognizer];
     
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
+    
 }
 
 -(void)createTodos {
@@ -116,6 +120,32 @@
     return 80.0;
 }
 
+-(void)toDoCompleted: (UISwipeGestureRecognizer *) sender {
+    NSLog(@"UISwipeGestureRecognizer");
+    CGPoint location = [sender locationInView:self.tableView];
+
+    NSIndexPath *indexPathSwipe = [self.tableView indexPathForRowAtPoint:location];
+
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPathSwipe];
+
+    Todo *toDo = [self.allTodos objectAtIndex:indexPathSwipe.row];
+
+    if (toDo.isCompleted == NO) {
+        NSLog(@"Setting isCompleted to YES");
+        toDo.isCompleted = YES;
+        NSLog(@"Setting accessory checkmark");
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    } if (toDo.isCompleted == YES) {
+//        toDo.isCompleted = NO;
+//        NSLog(@"Removing accessory checkmark");
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+
+
+
+
+
+}
 
 
 @end
