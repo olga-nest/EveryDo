@@ -14,6 +14,7 @@
 @interface MasterViewController ()
 
 @property NSMutableArray *allTodos;
+
 @end
 
 @implementation MasterViewController
@@ -63,8 +64,13 @@
         Todo *todo = self.allTodos[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
         [controller setDetailItem:todo];
+    } if ([[segue identifier] isEqualToString:@"toAddNewTodo"]) {
+        
+        AddNewTodoViewController *addNewTodoController = (AddNewTodoViewController *) [segue destinationViewController];
+        addNewTodoController.delegate = self;
     }
 }
+
 
 
 #pragma mark - Table View

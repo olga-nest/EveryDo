@@ -14,6 +14,7 @@
 
 @interface MasterViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, AddItemViewControlleDelegate>
 
+@property Todo *toDoToSave;
 
 @end
 
