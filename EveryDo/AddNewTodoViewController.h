@@ -17,7 +17,7 @@
 
 @interface AddNewTodoViewController : UIViewController
 
-@property (nonatomic, strong) id <AddItemViewControlleDelegate> delegate;
+@property (nonatomic, weak) id <AddItemViewControlleDelegate> delegate;
 
 @property (nonatomic, weak) IBOutlet UITextField *titleTextField;
 @property (nonatomic, weak) IBOutlet UITextField *descriptionTextField;
