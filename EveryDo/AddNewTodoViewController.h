@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Todo.h"
+
+@protocol AddItemViewControlleDelegate <NSObject>
+
+- (void)insertNewObject: (Todo *) todoObj;
+
+@end
 
 @interface AddNewTodoViewController : UIViewController
+
+@property (nonatomic, strong) id <AddItemViewControlleDelegate> delegate;
+
 @property (nonatomic, weak) IBOutlet UITextField *titleTextField;
 @property (nonatomic, weak) IBOutlet UITextField *descriptionTextField;
 @property (nonatomic, weak) IBOutlet UITextField *priorityTextField;

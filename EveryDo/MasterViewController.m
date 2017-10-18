@@ -24,11 +24,7 @@
     self.tableView.dataSource = self;
     [self createTodos];
 
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
-    
+    self.navigationItem.leftBarButtonItem = self.editButtonItem; 
     
 }
 
@@ -45,14 +41,17 @@
 }
 
 
-- (IBAction)insertNewObject:(id)sender {
+- (void)insertNewObject: (Todo *) todoObj {
     if (!self.allTodos) {
         self.allTodos = [[NSMutableArray alloc] init];
     }
-    Todo *todo = [Todo new];
-    [self.allTodos insertObject:todo atIndex:0];
+    
+    NSLog(@"Object recieved: with title: %@, description: %@ and priority: %@", todoObj.title, todoObj.todoDescription, todoObj.priorityNumber);
+    
+    [self.allTodos insertObject:todoObj atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadData]; 
 }
 
 
