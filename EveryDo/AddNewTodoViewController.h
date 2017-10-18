@@ -11,10 +11,9 @@
 @interface AddNewTodoViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UITextField *titleTextField;
 @property (nonatomic, weak) IBOutlet UITextField *descriptionTextField;
-@property (nonatomic, weak) IBOutlet UIPickerView *priorityPicker;
+@property (nonatomic, weak) IBOutlet UITextField *priorityTextField;
 
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *SaveButton;
+- (IBAction)cancelAddingTodo:(UIButton *)sender;
+- (IBAction)saveTodo:(UIButton *)sender;
 
 @end
