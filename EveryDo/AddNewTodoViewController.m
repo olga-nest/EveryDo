@@ -7,6 +7,7 @@
 //
 
 #import "AddNewTodoViewController.h"
+#import "MasterViewController.h"
 
 @interface AddNewTodoViewController ()
 
@@ -16,9 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup `after loading the view.
-}
 
+}
 
 
 - (IBAction)cancelAddingTodo:(UIButton *)sender {
@@ -39,4 +39,6 @@
 
     
 }
+
+
 @end
