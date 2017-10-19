@@ -132,22 +132,46 @@
 
     if (toDo.isCompleted == NO) {
         
+        //create temp Todo, to hold data
+        Todo *tempTodo = toDo;
+        //remove todo from allTodos array
+        [self.allTodos removeObject:toDo];
         NSLog(@"Setting isCompleted to YES");
-        toDo.isCompleted = YES;
-        NSLog(@"Setting accessory checkmark");
+        tempTodo.isCompleted = YES;
+        //add temp Todo to the end of the array
+        [self.allTodos addObject:tempTodo];
+        //Calculate path to the last row of the table view
+        NSInteger lastSectionIndex = [self.tableView numberOfSections] - 1;
+        NSInteger lastRowIndex = [self.tableView numberOfRowsInSection:lastSectionIndex] - 1;
+        NSIndexPath *pathToLastRow = [NSIndexPath indexPathForRow:lastRowIndex inSection:lastSectionIndex];
+        //move row with complited todo to the end of the list
+        [self.tableView moveRowAtIndexPath:indexPathSwipe toIndexPath:pathToLastRow];
+        //strike-throught the todo's title
+        CustomTableViewCell *cell = [self.tableView cellForRowAtIndexPath:pathToLastRow];
         NSString *toDoTitle = cell.cellTitle.text;
         NSLog(@"Using cell title %@", toDoTitle);
         NSDictionary *attribute = @{NSStrikethroughStyleAttributeName : [NSNumber numberWithInt:NSUnderlineStyleSingle]};
         NSAttributedString *toDoAtrributedTitle = [[NSAttributedString alloc]initWithString:toDoTitle attributes:attribute];
         cell.cellTitle.attributedText = toDoAtrributedTitle;
-
+        //display checkmark
+        NSLog(@"Setting accessory checkmark");
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-       
+        [self.tableView reloadData];
             } else {
                 toDo.isCompleted = NO;
                 NSLog(@"Removing accessory checkmark");
                 cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    
+}
+
 
 @end
